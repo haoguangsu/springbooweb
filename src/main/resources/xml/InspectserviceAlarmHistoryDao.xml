@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shr.service.minio.dao.InspectserviceAlarmHistoryDao">
+  <resultMap id="BaseResultMap" type="com.shr.service.minio.entity.InspectserviceAlarmHistoryEntity">
+    <!--@mbg.generated-->
+    <!--@Table t_inspectservice_alarm_history-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="device_bay" jdbcType="VARCHAR" property="deviceBay" />
+    <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
+    <result column="component_name" jdbcType="VARCHAR" property="componentName" />
+    <result column="object_id" jdbcType="VARCHAR" property="objectId" />
+    <result column="defect_type" jdbcType="VARCHAR" property="defectType" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
+    <result column="camera_id" jdbcType="VARCHAR" property="cameraId" />
+    <result column="preset_token" jdbcType="INTEGER" property="presetToken" />
+    <result column="priority" jdbcType="INTEGER" property="priority" />
+    <result column="auditor" jdbcType="VARCHAR" property="auditor" />
+    <result column="event_group_name" jdbcType="VARCHAR" property="eventGroupName" />
+    <result column="event_item_name" jdbcType="VARCHAR" property="eventItemName" />
+    <result column="audit_status" jdbcType="BOOLEAN" property="auditStatus" />
+    <result column="audit_time" jdbcType="VARCHAR" property="auditTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, device_bay, device_name, component_name, object_id, defect_type, "level", image_url, 
+    camera_id, preset_token, priority, auditor, event_group_name, event_item_name, audit_status, 
+    audit_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_inspectservice_alarm_history
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from t_inspectservice_alarm_history
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shr.service.minio.entity.InspectserviceAlarmHistoryEntity">
+    <!--@mbg.generated-->
+    insert into t_inspectservice_alarm_history (id, device_bay, device_name, 
+      component_name, object_id, defect_type, 
+      "level", image_url, camera_id, 
+      preset_token, priority, auditor, 
+      event_group_name, event_item_name, audit_status, 
+      audit_time)
+    values (#{id,jdbcType=VARCHAR}, #{deviceBay,jdbcType=VARCHAR}, #{deviceName,jdbcType=VARCHAR}, 
+      #{componentName,jdbcType=VARCHAR}, #{objectId,jdbcType=VARCHAR}, #{defectType,jdbcType=VARCHAR}, 
+      #{level,jdbcType=INTEGER}, #{imageUrl,jdbcType=VARCHAR}, #{cameraId,jdbcType=VARCHAR}, 
+      #{presetToken,jdbcType=INTEGER}, #{priority,jdbcType=INTEGER}, #{auditor,jdbcType=VARCHAR}, 
+      #{eventGroupName,jdbcType=VARCHAR}, #{eventItemName,jdbcType=VARCHAR}, #{auditStatus,jdbcType=BOOLEAN}, 
+      #{auditTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shr.service.minio.entity.InspectserviceAlarmHistoryEntity">
+    <!--@mbg.generated-->
+    insert into t_inspectservice_alarm_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="deviceBay != null">
+        device_bay,
+      </if>
+      <if test="deviceName != null">
+        device_name,
+      </if>
+      <if test="componentName != null">
+        component_name,
+      </if>
+      <if test="objectId != null">
+        object_id,
+      </if>
+      <if test="defectType != null">
+        defect_type,
+      </if>
+      <if test="level != null">
+        "level",
+      </if>
+      <if test="imageUrl != null">
+        image_url,
+      </if>
+      <if test="cameraId != null">
+        camera_id,
+      </if>
+      <if test="presetToken != null">
+        preset_token,
+      </if>
+      <if test="priority != null">
+        priority,
+      </if>
+      <if test="auditor != null">
+        auditor,
+      </if>
+      <if test="eventGroupName != null">
+        event_group_name,
+      </if>
+      <if test="eventItemName != null">
+        event_item_name,
+      </if>
+      <if test="auditStatus != null">
+        audit_status,
+      </if>
+      <if test="auditTime != null">
+        audit_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceBay != null">
+        #{deviceBay,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null">
+        #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="componentName != null">
+        #{componentName,jdbcType=VARCHAR},
+      </if>
+      <if test="objectId != null">
+        #{objectId,jdbcType=VARCHAR},
+      </if>
+      <if test="defectType != null">
+        #{defectType,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="imageUrl != null">
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cameraId != null">
+        #{cameraId,jdbcType=VARCHAR},
+      </if>
+      <if test="presetToken != null">
+        #{presetToken,jdbcType=INTEGER},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="auditor != null">
+        #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="eventGroupName != null">
+        #{eventGroupName,jdbcType=VARCHAR},
+      </if>
+      <if test="eventItemName != null">
+        #{eventItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null">
+        #{auditStatus,jdbcType=BOOLEAN},
+      </if>
+      <if test="auditTime != null">
+        #{auditTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shr.service.minio.entity.InspectserviceAlarmHistoryEntity">
+    <!--@mbg.generated-->
+    update t_inspectservice_alarm_history
+    <set>
+      <if test="deviceBay != null">
+        device_bay = #{deviceBay,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null">
+        device_name = #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="componentName != null">
+        component_name = #{componentName,jdbcType=VARCHAR},
+      </if>
+      <if test="objectId != null">
+        object_id = #{objectId,jdbcType=VARCHAR},
+      </if>
+      <if test="defectType != null">
+        defect_type = #{defectType,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        "level" = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="imageUrl != null">
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cameraId != null">
+        camera_id = #{cameraId,jdbcType=VARCHAR},
+      </if>
+      <if test="presetToken != null">
+        preset_token = #{presetToken,jdbcType=INTEGER},
+      </if>
+      <if test="priority != null">
+        priority = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="auditor != null">
+        auditor = #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="eventGroupName != null">
+        event_group_name = #{eventGroupName,jdbcType=VARCHAR},
+      </if>
+      <if test="eventItemName != null">
+        event_item_name = #{eventItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null">
+        audit_status = #{auditStatus,jdbcType=BOOLEAN},
+      </if>
+      <if test="auditTime != null">
+        audit_time = #{auditTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shr.service.minio.entity.InspectserviceAlarmHistoryEntity">
+    <!--@mbg.generated-->
+    update t_inspectservice_alarm_history
+    set device_bay = #{deviceBay,jdbcType=VARCHAR},
+      device_name = #{deviceName,jdbcType=VARCHAR},
+      component_name = #{componentName,jdbcType=VARCHAR},
+      object_id = #{objectId,jdbcType=VARCHAR},
+      defect_type = #{defectType,jdbcType=VARCHAR},
+      "level" = #{level,jdbcType=INTEGER},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      camera_id = #{cameraId,jdbcType=VARCHAR},
+      preset_token = #{presetToken,jdbcType=INTEGER},
+      priority = #{priority,jdbcType=INTEGER},
+      auditor = #{auditor,jdbcType=VARCHAR},
+      event_group_name = #{eventGroupName,jdbcType=VARCHAR},
+      event_item_name = #{eventItemName,jdbcType=VARCHAR},
+      audit_status = #{auditStatus,jdbcType=BOOLEAN},
+      audit_time = #{auditTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

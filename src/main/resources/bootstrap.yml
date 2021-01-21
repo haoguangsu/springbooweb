@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    consul:
+      host: web.sp5000.com
+      port: 8500
+      config:
+        enabled: true
+        watch:
+          enabled: true
+        format: yaml
+        dataKey: app
+        prefix: config
+      discovery:
+        serviceName: ${spring.application.name}
+        preferIpAddress: true
+        ipAddress: 10.16.193.232
+        healthCheckPath: /actuator/health
