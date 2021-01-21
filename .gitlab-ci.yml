@@ -1,0 +1,59 @@
+stages:
+  - analysis
+  - build
+  - pack
+  - deploy
+  - test-deploy
+analysis:
+  stage: analysis
+  tags:
+    - java
+  script:
+    - echo "=============== 开始Sonar代码检查任务 ==============="
+    - mvn test
+    - sonar-scanner -X -Dsonar.host.url=http://sonar.sp5000.com -Dsonar.login=admin -Dsonar.password=admin -Dsonar.analysis.mode=publish
+build:
+  stage: build
+  tags:
+    - build
+  only:
+    - dev 
+    - master
+  script:
+    - echo "=============== 开始编译构建任务 ==============="
+    - mvn package -Dmaven.test.skip=true
+    - chmod +r target/MinioService-1.0.2.RELEASE.jar
+    - chmod +x docker_deploy.sh
+    - ./docker_deploy.sh
+pack:
+  stage: pack
+  tags:
+    - build
+  only:
+    - validate_deploy  
+  script:
+    - mvn package -Dmaven.test.skip=true
+    - chmod +r target/MinioService-1.0.2.RELEASE.jar
+    - chmod +x pack_release.sh
+    - ./pack_release.sh
+deploy:
+  stage: deploy
+  tags:
+    - IRDEV01
+  only:
+    - master
+    - dev
+  script:
+    - echo "=============== 开始部署任务   ==============="
+#    - nomad stop MinioService
+    - nomad run deploy.nomad
+test-deploy:
+  stage: test-deploy
+  tags:
+    - test-deploy
+  only:
+    - test
+  script:
+    - echo "=============== 开始test部署任务   ==============="
+    - nomad stop MinioService
+    - nomad run deploy.nomad
